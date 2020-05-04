@@ -23,7 +23,7 @@ function get(req, res) {
         res.status(200).send({ tasks });
     })
         .populate('project')
-        .populate('user');        
+        .populate('user');
 }
 
 function getById(req, res) {
@@ -51,15 +51,15 @@ function save(req, res) {
     task.name = req.body.name;
     task.scheduledTime = req.body.scheduledTime;
     task.project = req.body.project;
-    task.user = req.user;    
+    task.user = req.user;
     task.id_Created = req.user;
     task.id_Modified = req.user;
     task.status = 'Created';
     task.timeLife = 0;
 
-    if(req.body.timeLife) task.timeLife = req.body.timeLife;
+    if (req.body.timeLife) task.timeLife = req.body.timeLife;
     console.log(req.body.status);
-    if(req.body.status) task.status = req.body.status;
+    if (req.body.status) task.status = req.body.status;
 
     //validamos la existencia del proyecto
     Project.exists({ _id: task.project }, (err, exist) => {
@@ -71,6 +71,32 @@ function save(req, res) {
             if (err) return res.status(500).send({ message: `error al guardar la tarea: ${err}` });
             console.log(newTask);
             res.status(200).send({ task: newTask });
+        });
+    });
+}
+
+function update(req, res) {
+    console.log('update');
+    let taskId = req.params.taskId;
+    let update = req.body;
+
+    update.dt_Modified = Date.now();
+    update.id_Modified = req.user;
+    console.log(req.user);
+
+    if (req.body.timeLife) update.timeLife = req.body.timeLife;
+    console.log(req.body.status);
+    if (req.body.status) update.status = req.body.status;
+
+    //validamos la existencia del proyecto
+    Project.exists({ _id: task.project }, (err, exist) => {
+        if (err) return res.status(500).send({ message: `error al crear la tarea: ${err}` });
+        if (!exist) return res.status(404).send({ message: `el proyecto no existe` });
+
+        Task.findByIdAndUpdate(taskId, update, (err, task) => {
+            if (err) return res.status(500).send({ message: `error al actualizar la tarea: ${err}` });
+            if (!task) return res.status(500).send({ message: 'No existe la tarea' });
+            res.status(200).send({ task: task });
         });
     });
 }
@@ -172,7 +198,7 @@ function stop(req, res) {
         //'Created','Started','Stopped','Paused'
         if (task.status == Status.Started) {
             console.log('calculo del tiempo pasado');
-            const diff = service.diff_minutes(new Date(), task.startTime);            
+            const diff = service.diff_minutes(new Date(), task.startTime);
             console.log(`pause - diferencia entre fechas ${diff}`);
             task.timeLife += diff;
         }
@@ -195,5 +221,6 @@ module.exports = {
     getById,
     start,
     stop,
-    pause
+    pause,
+    update
 };
