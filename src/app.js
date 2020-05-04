@@ -15,7 +15,10 @@ const api = require('./routes');
 
 //settings 
 //__dirname: direccion del archivo que se ejecuta
+app.use(express.static(path.join(__dirname, 'public')))
 const path_views = path.join(__dirname, 'views');
+console.log('path views');
+console.log(path_views);
 app.set('views', path_views);
 app.engine('ejs', engine);
 //establecemos el motor de plantillas

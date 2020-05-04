@@ -31,6 +31,7 @@ api.post('/signin', userControllers.signIn);
 //Authorize
 api.get('/task', auth, taskControllers.get);
 api.get('/task/:taskId', auth, taskControllers.getById);
+api.put('/task/:taskId', auth, taskControllers.update);
 api.post('/task', auth, taskControllers.save);
 api.delete('/task/:taskId', auth, taskControllers.remove);
 
