@@ -1,0 +1,2567 @@
+{
+	"info": {
+		"_postman_id": "08486648-b63f-4daa-830f-609477efb802",
+		"name": "Qrvey",
+		"description": "API Qrvey - registro de proyectos y tareas asignadas a los usuarios del sistema",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"exampleUser@gmail.com\",\n\t\"displayName\": \"Juan Perez\",\n\t\"password\": \"qazXYZ123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/signup",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"signup"
+							]
+						},
+						"description": "<h1>Descripción</h1>\n<p>Creación de usuarios</p>\n<h1>Estructura de datos</h1>\n\n* email: correo del usuario\n* displayName: nombre del usuario\n* password: contraseña de acceso"
+					},
+					"response": [
+						{
+							"name": "Crear usuario",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"exampleUser@gmail.com\",\n\t\"displayName\": \"Juan Perez\",\n\t\"password\": \"qazXYZ123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/signup",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"2a-M/MGQOkC2pZVvzXP6nninX+JN9U\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 12:49:01 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Usuario creado correctamente\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"exampleUser@gmail.com\",\n\t\"password\": \"qazXYZ123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/signin",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"signin"
+							]
+						},
+						"description": "<h1>Descripción</h1>\n<p>Ingreso de usuarios</p>\n<h1>Estructura de datos</h1>\n\n* email: correo del usuario\n* password: contraseña de acceso"
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"exampleUser@gmail.com\",\n\t\"password\": \"qazXYZ123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/signin",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "222"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"de-mZgKya5cmf5RV1myN1buvv5Ijig\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 12:52:43 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Te has logueado correctamente\",\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+								"type": "text",
+								"description": "Token de autorización"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/user",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						},
+						"description": "<h1>Descripción</h1>\nLista de usuarios creados en el sistema"
+					},
+					"response": [
+						{
+							"name": "Get",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+										"type": "text",
+										"description": "Requiere autorizacion"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/user",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1609"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"649-9jKietAKgcp0E2mfrU82U5tRKzc\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 12:54:16 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"users\": [\n        {\n            \"dt_Created\": \"2020-05-04T13:23:06.797Z\",\n            \"dt_Modified\": \"2020-05-04T13:23:06.797Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb0173aba5ae60004b18ef7\",\n            \"email\": \"jorgemurillop@gmail.com\",\n            \"displayName\": \"pedro pablo\",\n            \"__v\": 0\n        },\n        {\n            \"dt_Created\": \"2020-05-04T17:34:36.710Z\",\n            \"dt_Modified\": \"2020-05-04T17:34:36.710Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb0522cd2ef0a00040d4ace\",\n            \"email\": \"userinvitado@gmail.com\",\n            \"displayName\": \"usuario invitado\",\n            \"__v\": 0\n        },\n        {\n            \"dt_Created\": \"2020-05-05T02:18:19.049Z\",\n            \"dt_Modified\": \"2020-05-05T02:18:19.049Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb0cceb1a831a000476d5c0\",\n            \"email\": \"utestqrvey@gmail.com\",\n            \"displayName\": \"unit test\",\n            \"__v\": 0\n        },\n        {\n            \"dt_Created\": \"2020-05-05T02:19:58.762Z\",\n            \"dt_Modified\": \"2020-05-05T02:19:58.762Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb0cd4e1a831a000476d5c2\",\n            \"email\": \"jorgemurillo@gmail.com\",\n            \"displayName\": \"jorge murillo p\",\n            \"__v\": 0\n        },\n        {\n            \"dt_Created\": \"2020-05-05T02:21:14.246Z\",\n            \"dt_Modified\": \"2020-05-05T02:21:14.246Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb0cd9a1a831a000476d5c3\",\n            \"email\": \"utestqrvey_1@gmail.com\",\n            \"displayName\": \"unit test\",\n            \"__v\": 0\n        },\n        {\n            \"dt_Created\": \"2020-05-05T03:22:52.129Z\",\n            \"dt_Modified\": \"2020-05-05T03:22:52.129Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb0dc0ce6c2eb00049b0b07\",\n            \"email\": \"unittestqrvey123@gmail.com\",\n            \"displayName\": \"unit test\",\n            \"__v\": 0\n        },\n        {\n            \"dt_Created\": \"2020-05-05T12:24:48.915Z\",\n            \"dt_Modified\": \"2020-05-05T12:24:48.915Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb15b103c591a0004389f1b\",\n            \"email\": \"example@gmail.com\",\n            \"displayName\": \"juan perez\",\n            \"__v\": 0\n        },\n        {\n            \"dt_Created\": \"2020-05-05T12:49:00.820Z\",\n            \"dt_Modified\": \"2020-05-05T12:49:00.820Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb160bc3c591a0004389f1c\",\n            \"email\": \"exampleuser@gmail.com\",\n            \"displayName\": \"juan perez\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"description": "Metodos necesarios para administrar los usuarios",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "400d6f0b-ec68-470e-9213-024efbd21725",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "72a38a83-5e15-4f5e-b193-bb5945b036b5",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Proyect",
+			"item": [
+				{
+					"name": "Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIwMTczYWJhNWFlNjAwMDRiMThlZjciLCJpYXQiOjE1ODg2ODY2NDMsImV4cCI6MTU4ODc3MzA0M30.96ZDSzkiMMsrx8L9LjZ-bueT35XvNVrQQpW-yXom6iQ",
+								"type": "text",
+								"description": "Token de autenticación"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Gastos medicos por IPS\"\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/project",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"project"
+							]
+						},
+						"description": "<h1>Descripción</h1>\n<p>Creación de proyecto</p>\n<h1>Estructura de datos</h1>\n\n* name: nombre o descripción corta del proyecto"
+					},
+					"response": [
+						{
+							"name": "Post",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+										"type": "text",
+										"description": "Token de autenticación"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Checki-chekout huespedes en casa\"\n}\n\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/project",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"project"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "273"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"111-/sGegv2fXBEGRJ78VvA4SZ+EvTg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 13:46:05 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"project\": {\n        \"dt_Created\": \"2020-05-05T13:46:05.410Z\",\n        \"dt_Modified\": \"2020-05-05T13:46:05.410Z\",\n        \"enabled\": true,\n        \"_id\": \"5eb16e1d3c591a0004389f1f\",\n        \"name\": \"checki-chekout huespedes en casa\",\n        \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n        \"id_Modified\": \"5eb160bc3c591a0004389f1c\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Put",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIwMTczYWJhNWFlNjAwMDRiMThlZjciLCJpYXQiOjE1ODg2ODY2NDMsImV4cCI6MTU4ODc3MzA0M30.96ZDSzkiMMsrx8L9LjZ-bueT35XvNVrQQpW-yXom6iQ",
+								"type": "text",
+								"description": "Token de autenticación"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"checkin-chekout huespedes en casa - hoy\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/project?id=5eb16e1d3c591a0004389f1f",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"project"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5eb16e1d3c591a0004389f1f",
+									"description": "Código identificador"
+								}
+							]
+						},
+						"description": "<h1>Descripción</h1>\n<p>Actualización de proyectos</p>\n<h1>Estructura de datos</h1>\n\n* name: nombre o descripción corta del proyecto"
+					},
+					"response": [
+						{
+							"name": "Put",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIwMTczYWJhNWFlNjAwMDRiMThlZjciLCJpYXQiOjE1ODg2ODY2NDMsImV4cCI6MTU4ODc3MzA0M30.96ZDSzkiMMsrx8L9LjZ-bueT35XvNVrQQpW-yXom6iQ",
+										"type": "text",
+										"description": "Token de autenticación"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"checkin-chekout huespedes en casa\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/project/5eb16e1d3c591a0004389f1f",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"project",
+										"5eb16e1d3c591a0004389f1f"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "274"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"112-r993/DZdwlaEOldnaW9h1w20v1c\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 13:57:46 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"project\": {\n        \"dt_Created\": \"2020-05-05T13:46:05.410Z\",\n        \"dt_Modified\": \"2020-05-05T13:56:12.902Z\",\n        \"enabled\": true,\n        \"_id\": \"5eb16e1d3c591a0004389f1f\",\n        \"name\": \"checkin-chekout huespedes en casa\",\n        \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n        \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/project",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"project"
+							]
+						},
+						"description": "<h1>Descripción</h1>\n<p>Listado de proyectos activos, ordenados del mas reciente al mas antiguo</p>"
+					},
+					"response": [
+						{
+							"name": "Get",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/project",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"project"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1314"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"522-rGaJCnK0qbLElLJfCNKX9oT3BNs\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 14:01:02 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"projects\": [\n        {\n            \"dt_Created\": \"2020-05-05T13:52:16.697Z\",\n            \"dt_Modified\": \"2020-05-05T13:52:16.697Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb16f903c591a0004389f21\",\n            \"name\": \"gastos medicos por ips\",\n            \"id_Created\": \"5eb0173aba5ae60004b18ef7\",\n            \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n            \"__v\": 0\n        },\n        {\n            \"dt_Created\": \"2020-05-05T13:52:00.325Z\",\n            \"dt_Modified\": \"2020-05-05T13:52:00.325Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb16f803c591a0004389f20\",\n            \"name\": \"gastos medicos por erp\",\n            \"id_Created\": \"5eb0173aba5ae60004b18ef7\",\n            \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n            \"__v\": 0\n        },\n        {\n            \"dt_Created\": \"2020-05-05T13:46:05.410Z\",\n            \"dt_Modified\": \"2020-05-05T13:57:46.578Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb16e1d3c591a0004389f1f\",\n            \"name\": \"checkin-chekout huespedes en casa\",\n            \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n            \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n            \"__v\": 0\n        },\n        {\n            \"dt_Created\": \"2020-05-05T13:17:37.660Z\",\n            \"dt_Modified\": \"2020-05-05T13:44:18.578Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb167713c591a0004389f1e\",\n            \"name\": \"analisis de gastos por meses - datos graficos\",\n            \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n            \"id_Modified\": \"5eb160bc3c591a0004389f1c\",\n            \"__v\": 0\n        },\n        {\n            \"dt_Created\": \"2020-05-05T13:03:32.281Z\",\n            \"dt_Modified\": \"2020-05-05T13:03:32.281Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb164243c591a0004389f1d\",\n            \"name\": \"analisis de ventas por meses\",\n            \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n            \"id_Modified\": \"5eb160bc3c591a0004389f1c\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Alls",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+								"type": "text",
+								"description": "Token de autenticación"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/project/alls",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"project",
+								"alls"
+							]
+						},
+						"description": "<h1>Descripción</h1>\n<p>Listado de proyectos activos e inactivos, ordenados del mas reciente al mas antiguo</p>"
+					},
+					"response": [
+						{
+							"name": "Get Alls",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/project/alls",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"project",
+										"alls"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1314"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"522-rGaJCnK0qbLElLJfCNKX9oT3BNs\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 14:01:53 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"projects\": [\n        {\n            \"dt_Created\": \"2020-05-05T13:52:16.697Z\",\n            \"dt_Modified\": \"2020-05-05T13:52:16.697Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb16f903c591a0004389f21\",\n            \"name\": \"gastos medicos por ips\",\n            \"id_Created\": \"5eb0173aba5ae60004b18ef7\",\n            \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n            \"__v\": 0\n        },\n        {\n            \"dt_Created\": \"2020-05-05T13:52:00.325Z\",\n            \"dt_Modified\": \"2020-05-05T13:52:00.325Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb16f803c591a0004389f20\",\n            \"name\": \"gastos medicos por erp\",\n            \"id_Created\": \"5eb0173aba5ae60004b18ef7\",\n            \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n            \"__v\": 0\n        },\n        {\n            \"dt_Created\": \"2020-05-05T13:46:05.410Z\",\n            \"dt_Modified\": \"2020-05-05T13:57:46.578Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb16e1d3c591a0004389f1f\",\n            \"name\": \"checkin-chekout huespedes en casa\",\n            \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n            \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n            \"__v\": 0\n        },\n        {\n            \"dt_Created\": \"2020-05-05T13:17:37.660Z\",\n            \"dt_Modified\": \"2020-05-05T13:44:18.578Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb167713c591a0004389f1e\",\n            \"name\": \"analisis de gastos por meses - datos graficos\",\n            \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n            \"id_Modified\": \"5eb160bc3c591a0004389f1c\",\n            \"__v\": 0\n        },\n        {\n            \"dt_Created\": \"2020-05-05T13:03:32.281Z\",\n            \"dt_Modified\": \"2020-05-05T13:03:32.281Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb164243c591a0004389f1d\",\n            \"name\": \"analisis de ventas por meses\",\n            \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n            \"id_Modified\": \"5eb160bc3c591a0004389f1c\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/project/getById?id=5eb16e1d3c591a0004389f1f",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"project",
+								"getById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5eb16e1d3c591a0004389f1f",
+									"description": "Código identificador"
+								}
+							]
+						},
+						"description": "<h1>Descripción</h1>\n<p>Consulta de proyectos por su código identificador</p>"
+					},
+					"response": [
+						{
+							"name": "Get by Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/project/getById?id=5eb16e1d3c591a0004389f1f",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"project",
+										"getById"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5eb16e1d3c591a0004389f1f",
+											"description": "Código identificador"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "280"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"118-yEw+L03+OKXGydS/LIaaaNnddqs\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 17:35:21 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"project\": {\n        \"dt_Created\": \"2020-05-05T13:46:05.410Z\",\n        \"dt_Modified\": \"2020-05-05T17:33:46.130Z\",\n        \"enabled\": true,\n        \"_id\": \"5eb16e1d3c591a0004389f1f\",\n        \"name\": \"checkin-chekout huespedes en casa - hoy\",\n        \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n        \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get My Times",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIwMTczYWJhNWFlNjAwMDRiMThlZjciLCJpYXQiOjE1ODg2ODY2NDMsImV4cCI6MTU4ODc3MzA0M30.96ZDSzkiMMsrx8L9LjZ-bueT35XvNVrQQpW-yXom6iQ",
+								"type": "text",
+								"description": "Token de autenticación"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/project/myTime",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"project",
+								"myTime"
+							]
+						},
+						"description": "<h1>Descripción</h1>\n<p>Tiempos invertidos por el usuario actual en cada proyecto</p>"
+					},
+					"response": [
+						{
+							"name": "Get My Times",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIwMTczYWJhNWFlNjAwMDRiMThlZjciLCJpYXQiOjE1ODg2ODY2NDMsImV4cCI6MTU4ODc3MzA0M30.96ZDSzkiMMsrx8L9LjZ-bueT35XvNVrQQpW-yXom6iQ",
+										"type": "text",
+										"description": "Token de autenticación"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {}
+									}
+								},
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/project/myTime",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"project",
+										"myTime"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "651"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"28b-4CZ2IX4bbgYSzT3R3x9e4O5xkCA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 18:44:14 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"dt_Created\": \"2020-05-05T13:52:16.697Z\",\n        \"dt_Modified\": \"2020-05-05T13:52:16.697Z\",\n        \"enabled\": true,\n        \"_id\": \"5eb16f903c591a0004389f21\",\n        \"name\": \"gastos medicos por ips\",\n        \"id_Created\": \"5eb0173aba5ae60004b18ef7\",\n        \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n        \"__v\": 0,\n        \"extended\": [\n            {\n                \"userId\": \"5eb0173aba5ae60004b18ef7\",\n                \"timeLife\": 30\n            }\n        ]\n    },\n    {\n        \"dt_Created\": \"2020-05-05T13:46:05.410Z\",\n        \"dt_Modified\": \"2020-05-05T17:33:46.130Z\",\n        \"enabled\": true,\n        \"_id\": \"5eb16e1d3c591a0004389f1f\",\n        \"name\": \"checkin-chekout huespedes en casa - hoy\",\n        \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n        \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n        \"__v\": 0,\n        \"extended\": [\n            {\n                \"userId\": \"5eb0173aba5ae60004b18ef7\",\n                \"timeLife\": 4\n            }\n        ]\n    }\n]"
+						},
+						{
+							"name": "Get My Times",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+										"type": "text",
+										"description": "Token de autenticación"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/project/myTime",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"project",
+										"myTime"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "650"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"28a-agcdyrD5ZuSp21kpYr25ziL9CGw\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 18:09:17 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"dt_Created\": \"2020-05-05T13:52:16.697Z\",\n        \"dt_Modified\": \"2020-05-05T13:52:16.697Z\",\n        \"enabled\": true,\n        \"_id\": \"5eb16f903c591a0004389f21\",\n        \"name\": \"gastos medicos por ips\",\n        \"id_Created\": \"5eb0173aba5ae60004b18ef7\",\n        \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n        \"__v\": 0,\n        \"extended\": [\n            {\n                \"userId\": \"5eb160bc3c591a0004389f1c\",\n                \"timeLife\": 7\n            }\n        ]\n    },\n    {\n        \"dt_Created\": \"2020-05-05T13:46:05.410Z\",\n        \"dt_Modified\": \"2020-05-05T17:33:46.130Z\",\n        \"enabled\": true,\n        \"_id\": \"5eb16e1d3c591a0004389f1f\",\n        \"name\": \"checkin-chekout huespedes en casa - hoy\",\n        \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n        \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n        \"__v\": 0,\n        \"extended\": [\n            {\n                \"userId\": \"5eb160bc3c591a0004389f1c\",\n                \"timeLife\": 0\n            }\n        ]\n    }\n]"
+						},
+						{
+							"name": "Get My Times - Example 2",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIwMTczYWJhNWFlNjAwMDRiMThlZjciLCJpYXQiOjE1ODg2ODY2NDMsImV4cCI6MTU4ODc3MzA0M30.96ZDSzkiMMsrx8L9LjZ-bueT35XvNVrQQpW-yXom6iQ",
+										"type": "text",
+										"description": "Token de autenticación"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/project/myTime",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"project",
+										"myTime"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "651"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"28b-4CZ2IX4bbgYSzT3R3x9e4O5xkCA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 18:31:42 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"dt_Created\": \"2020-05-05T13:52:16.697Z\",\n        \"dt_Modified\": \"2020-05-05T13:52:16.697Z\",\n        \"enabled\": true,\n        \"_id\": \"5eb16f903c591a0004389f21\",\n        \"name\": \"gastos medicos por ips\",\n        \"id_Created\": \"5eb0173aba5ae60004b18ef7\",\n        \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n        \"__v\": 0,\n        \"extended\": [\n            {\n                \"userId\": \"5eb0173aba5ae60004b18ef7\",\n                \"timeLife\": 30\n            }\n        ]\n    },\n    {\n        \"dt_Created\": \"2020-05-05T13:46:05.410Z\",\n        \"dt_Modified\": \"2020-05-05T17:33:46.130Z\",\n        \"enabled\": true,\n        \"_id\": \"5eb16e1d3c591a0004389f1f\",\n        \"name\": \"checkin-chekout huespedes en casa - hoy\",\n        \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n        \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n        \"__v\": 0,\n        \"extended\": [\n            {\n                \"userId\": \"5eb0173aba5ae60004b18ef7\",\n                \"timeLife\": 4\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Users Times",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+								"type": "text",
+								"description": "Token de autenticación"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/project/usersTime",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"project",
+								"usersTime"
+							]
+						},
+						"description": "<h1>Descripción</h1>\nListado de proyectos incluidos los tiempos invertidos en las tareas del usuario"
+					},
+					"response": [
+						{
+							"name": "Get Users Times",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+										"type": "text",
+										"description": "Token de autenticación"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {}
+									}
+								},
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/project/usersTime",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"project",
+										"usersTime"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1319"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"527-hHhdNCSEe19EH3dI++BqJNCjC5k\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 18:45:55 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": [\n        {\n            \"dt_Created\": \"2020-05-05T13:52:16.697Z\",\n            \"dt_Modified\": \"2020-05-05T13:52:16.697Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb16f903c591a0004389f21\",\n            \"name\": \"gastos medicos por ips\",\n            \"id_Created\": \"5eb0173aba5ae60004b18ef7\",\n            \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n            \"__v\": 0,\n            \"extended\": [\n                {\n                    \"userId\": \"5eb160bc3c591a0004389f1c\",\n                    \"timeLife\": 7\n                },\n                {\n                    \"userId\": \"5eb0173aba5ae60004b18ef7\",\n                    \"timeLife\": 30\n                }\n            ]\n        },\n        {\n            \"dt_Created\": \"2020-05-05T13:52:00.325Z\",\n            \"dt_Modified\": \"2020-05-05T13:52:00.325Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb16f803c591a0004389f20\",\n            \"name\": \"gastos medicos por erp\",\n            \"id_Created\": \"5eb0173aba5ae60004b18ef7\",\n            \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n            \"__v\": 0,\n            \"extended\": []\n        },\n        {\n            \"dt_Created\": \"2020-05-05T13:46:05.410Z\",\n            \"dt_Modified\": \"2020-05-05T17:33:46.130Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb16e1d3c591a0004389f1f\",\n            \"name\": \"checkin-chekout huespedes en casa - hoy\",\n            \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n            \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n            \"__v\": 0,\n            \"extended\": [\n                {\n                    \"userId\": \"5eb0173aba5ae60004b18ef7\",\n                    \"timeLife\": 4\n                },\n                {\n                    \"userId\": \"5eb160bc3c591a0004389f1c\",\n                    \"timeLife\": 0\n                }\n            ]\n        },\n        {\n            \"dt_Created\": \"2020-05-05T13:17:37.660Z\",\n            \"dt_Modified\": \"2020-05-05T13:44:18.578Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb167713c591a0004389f1e\",\n            \"name\": \"analisis de gastos por meses - datos graficos\",\n            \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n            \"id_Modified\": \"5eb160bc3c591a0004389f1c\",\n            \"__v\": 0,\n            \"extended\": []\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+								"type": "text",
+								"description": "Token de autenticación"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/project?id=5eb164243c591a0004389f1d",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"project"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5eb164243c591a0004389f1d",
+									"description": "Código identificador"
+								}
+							]
+						},
+						"description": "<h1>Descripción</h1>\nMetodo que expone las funcionalidades necesarias para eliminar proyectos"
+					},
+					"response": [
+						{
+							"name": "Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+										"type": "text",
+										"description": "Token de autenticación"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/project?id=5eb164243c591a0004389f1d",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"project"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5eb164243c591a0004389f1d",
+											"description": "Código identificador"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"2b-M7gfsHTlYqf8+JV89Jj2xHeInsY\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 17:40:48 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"El proyecto ha sido eliminado\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Metodos necesarios para administrar los proyectos",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "eddcbe57-67b4-4488-b752-a3f6e4aff803",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "63173e9d-5068-410d-a810-d8ab149f4e33",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+								"type": "text",
+								"description": "Token de autenticación"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"facturas checout\",\n\t\"scheduledTime\": \"60\",\n\t\"project\":\"5eb16e1d3c591a0004389f1f\"\n}",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/task",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"task"
+							]
+						},
+						"description": "<h1>Descripción</h1>\nMétodo para registrar tareas"
+					},
+					"response": [
+						{
+							"name": "Post",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIwMTczYWJhNWFlNjAwMDRiMThlZjciLCJpYXQiOjE1ODg2ODY2NDMsImV4cCI6MTU4ODc3MzA0M30.96ZDSzkiMMsrx8L9LjZ-bueT35XvNVrQQpW-yXom6iQ",
+										"type": "text",
+										"description": "Token de autenticación"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"gastos por clinicas generales\",\n\t\"scheduledTime\": \"60\",\n\t\"project\":\"5eb16f903c591a0004389f21\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/task",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"task"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "428"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"1ac-NTyxYOGD2oIVkrNqMOLTvIgN4qU\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 17:45:06 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"task\": {\n        \"startTime\": \"2020-05-05T17:45:06.160Z\",\n        \"timeLife\": 0,\n        \"dt_Created\": \"2020-05-05T17:45:06.160Z\",\n        \"dt_Modified\": \"2020-05-05T17:45:06.160Z\",\n        \"enabled\": true,\n        \"_id\": \"5eb1a62275ed86000438a3cb\",\n        \"name\": \"gastos por clinicas generales\",\n        \"scheduledTime\": 60,\n        \"project\": \"5eb16f903c591a0004389f21\",\n        \"user\": \"5eb0173aba5ae60004b18ef7\",\n        \"id_Created\": \"5eb0173aba5ae60004b18ef7\",\n        \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n        \"status\": \"Created\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Post Example Manual",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIwMTczYWJhNWFlNjAwMDRiMThlZjciLCJpYXQiOjE1ODg2ODY2NDMsImV4cCI6MTU4ODc3MzA0M30.96ZDSzkiMMsrx8L9LjZ-bueT35XvNVrQQpW-yXom6iQ",
+								"type": "text",
+								"description": "Token de autenticación"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n\t\"scheduledTime\": \"65\",\n\t\"project\":\"5eb16f903c591a0004389f21\",\n\t\"timeLife\": 60,\n\t\"status\": \"Stopped\"\n}"
+						},
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/task",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"task"
+							]
+						},
+						"description": "<h1>Descripción</h1>\nRegistro manual de tareas y el tiempo invertido"
+					},
+					"response": [
+						{
+							"name": "Post Example Manual con nombre de tarea",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIwMTczYWJhNWFlNjAwMDRiMThlZjciLCJpYXQiOjE1ODg2ODY2NDMsImV4cCI6MTU4ODc3MzA0M30.96ZDSzkiMMsrx8L9LjZ-bueT35XvNVrQQpW-yXom6iQ",
+										"type": "text",
+										"description": "Token de autenticación"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"Tarea ingresada manualmente\",\n\t\"scheduledTime\": \"120\",\n\t\"project\":\"5eb16f903c591a0004389f21\",\n\t\"timeLife\": 60,\n\t\"status\": \"Stopped\"\n}"
+								},
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/task",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"task"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "428"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"1ac-lXCl0w9x9C9xgLPWtko7qwKi124\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 18:48:38 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"task\": {\n        \"startTime\": \"2020-05-05T18:48:38.211Z\",\n        \"timeLife\": 60,\n        \"dt_Created\": \"2020-05-05T18:48:38.211Z\",\n        \"dt_Modified\": \"2020-05-05T18:48:38.211Z\",\n        \"enabled\": true,\n        \"_id\": \"5eb1b506e4c9d500045420a6\",\n        \"name\": \"tarea ingresada manualmente\",\n        \"scheduledTime\": 120,\n        \"project\": \"5eb16f903c591a0004389f21\",\n        \"user\": \"5eb0173aba5ae60004b18ef7\",\n        \"id_Created\": \"5eb0173aba5ae60004b18ef7\",\n        \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n        \"status\": \"Stopped\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Post Example Manual - sin nombre",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIwMTczYWJhNWFlNjAwMDRiMThlZjciLCJpYXQiOjE1ODg2ODY2NDMsImV4cCI6MTU4ODc3MzA0M30.96ZDSzkiMMsrx8L9LjZ-bueT35XvNVrQQpW-yXom6iQ",
+										"type": "text",
+										"description": "Token de autenticación"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\n\t\"scheduledTime\": \"65\",\n\t\"project\":\"5eb16f903c591a0004389f21\",\n\t\"timeLife\": 60,\n\t\"status\": \"Stopped\"\n}"
+								},
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/task",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"task"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "390"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"186-q/rGXzVawRhopH5qmqym3IoF2Po\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 18:54:39 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"task\": {\n        \"startTime\": \"2020-05-05T18:54:39.829Z\",\n        \"timeLife\": 60,\n        \"dt_Created\": \"2020-05-05T18:54:39.829Z\",\n        \"dt_Modified\": \"2020-05-05T18:54:39.829Z\",\n        \"enabled\": true,\n        \"_id\": \"5eb1b66fe4c9d500045420a7\",\n        \"scheduledTime\": 65,\n        \"project\": \"5eb16f903c591a0004389f21\",\n        \"user\": \"5eb0173aba5ae60004b18ef7\",\n        \"id_Created\": \"5eb0173aba5ae60004b18ef7\",\n        \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n        \"status\": \"Stopped\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIwMTczYWJhNWFlNjAwMDRiMThlZjciLCJpYXQiOjE1ODg2ODY2NDMsImV4cCI6MTU4ODc3MzA0M30.96ZDSzkiMMsrx8L9LjZ-bueT35XvNVrQQpW-yXom6iQ",
+								"type": "text",
+								"description": "Token de autenticación"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/task",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"task"
+							]
+						},
+						"description": "<h1>Descripción</h1>\nListado de tareas ordenados de la mas reciente a la mas antigua, indica el estado y tiempo de cada tarea"
+					},
+					"response": [
+						{
+							"name": "Get",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+										"type": "text",
+										"description": "Token de autenticación"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/task",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"task"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1628"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"65c-nWAVAdiDCwXuAC3V27na0JRbA4E\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 17:46:13 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"tasks\": [\n        {\n            \"startTime\": \"2020-05-05T17:44:14.472Z\",\n            \"timeLife\": 0,\n            \"dt_Created\": \"2020-05-05T17:44:14.472Z\",\n            \"dt_Modified\": \"2020-05-05T17:44:14.472Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb1a5ee75ed86000438a3ca\",\n            \"name\": \"gastos por sucursales\",\n            \"scheduledTime\": 129,\n            \"project\": {\n                \"dt_Created\": \"2020-05-05T13:52:16.697Z\",\n                \"dt_Modified\": \"2020-05-05T13:52:16.697Z\",\n                \"enabled\": true,\n                \"_id\": \"5eb16f903c591a0004389f21\",\n                \"name\": \"gastos medicos por ips\",\n                \"id_Created\": \"5eb0173aba5ae60004b18ef7\",\n                \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n                \"__v\": 0\n            },\n            \"user\": {\n                \"dt_Created\": \"2020-05-05T12:49:00.820Z\",\n                \"dt_Modified\": \"2020-05-05T12:49:00.820Z\",\n                \"enabled\": true,\n                \"_id\": \"5eb160bc3c591a0004389f1c\",\n                \"email\": \"exampleuser@gmail.com\",\n                \"displayName\": \"juan perez\",\n                \"__v\": 0\n            },\n            \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n            \"id_Modified\": \"5eb160bc3c591a0004389f1c\",\n            \"status\": \"Created\",\n            \"__v\": 0\n        },\n        {\n            \"startTime\": \"2020-05-05T17:43:51.058Z\",\n            \"timeLife\": 0,\n            \"dt_Created\": \"2020-05-05T17:43:51.058Z\",\n            \"dt_Modified\": \"2020-05-05T17:43:51.058Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb1a5d775ed86000438a3c9\",\n            \"name\": \"gastos por segmentos\",\n            \"scheduledTime\": 240,\n            \"project\": {\n                \"dt_Created\": \"2020-05-05T13:52:16.697Z\",\n                \"dt_Modified\": \"2020-05-05T13:52:16.697Z\",\n                \"enabled\": true,\n                \"_id\": \"5eb16f903c591a0004389f21\",\n                \"name\": \"gastos medicos por ips\",\n                \"id_Created\": \"5eb0173aba5ae60004b18ef7\",\n                \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n                \"__v\": 0\n            },\n            \"user\": {\n                \"dt_Created\": \"2020-05-05T12:49:00.820Z\",\n                \"dt_Modified\": \"2020-05-05T12:49:00.820Z\",\n                \"enabled\": true,\n                \"_id\": \"5eb160bc3c591a0004389f1c\",\n                \"email\": \"exampleuser@gmail.com\",\n                \"displayName\": \"juan perez\",\n                \"__v\": 0\n            },\n            \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n            \"id_Modified\": \"5eb160bc3c591a0004389f1c\",\n            \"status\": \"Created\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+								"type": "text",
+								"description": "Token de autenticación"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/task/getById?id=5eb1a5ee75ed86000438a3ca",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"task",
+								"getById"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5eb1a5ee75ed86000438a3ca",
+									"description": "Código identificador"
+								}
+							]
+						},
+						"description": "<h1>Descripción</h1>\nConsulta de tarea por el id identificador"
+					},
+					"response": [
+						{
+							"name": "Get By Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+										"type": "text",
+										"description": "Token de autenticación"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/task/getById?id=5eb1a5ee75ed86000438a3ca",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"task",
+										"getById"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5eb1a5ee75ed86000438a3ca",
+											"description": "Código identificador"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "817"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"331-jF+Ffs3Op1Z9IOkJgXJCwRr6aEg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 17:55:55 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"task\": {\n        \"startTime\": \"2020-05-05T17:44:14.472Z\",\n        \"timeLife\": 0,\n        \"dt_Created\": \"2020-05-05T17:44:14.472Z\",\n        \"dt_Modified\": \"2020-05-05T17:44:14.472Z\",\n        \"enabled\": true,\n        \"_id\": \"5eb1a5ee75ed86000438a3ca\",\n        \"name\": \"gastos por sucursales\",\n        \"scheduledTime\": 129,\n        \"project\": {\n            \"dt_Created\": \"2020-05-05T13:52:16.697Z\",\n            \"dt_Modified\": \"2020-05-05T13:52:16.697Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb16f903c591a0004389f21\",\n            \"name\": \"gastos medicos por ips\",\n            \"id_Created\": \"5eb0173aba5ae60004b18ef7\",\n            \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n            \"__v\": 0\n        },\n        \"user\": {\n            \"dt_Created\": \"2020-05-05T12:49:00.820Z\",\n            \"dt_Modified\": \"2020-05-05T12:49:00.820Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb160bc3c591a0004389f1c\",\n            \"email\": \"exampleuser@gmail.com\",\n            \"displayName\": \"juan perez\",\n            \"__v\": 0\n        },\n        \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n        \"id_Modified\": \"5eb160bc3c591a0004389f1c\",\n        \"status\": \"Created\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get By Project Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Token de autenticación",
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/task/getByProjectId?id=5eb16e1d3c591a0004389f1f",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"task",
+								"getByProjectId"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5eb16e1d3c591a0004389f1f",
+									"description": "Código identificador"
+								}
+							]
+						},
+						"description": "<h1>Descripción</h1>\nListado de tareas que pertenecen a un proyecto"
+					},
+					"response": [
+						{
+							"name": "Get By Id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+										"type": "text",
+										"description": "Token de autenticación"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/task/getById?id=5eb1a5ee75ed86000438a3ca",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"task",
+										"getById"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5eb1a5ee75ed86000438a3ca",
+											"description": "Código identificador"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "817"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"331-jF+Ffs3Op1Z9IOkJgXJCwRr6aEg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 17:55:55 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"task\": {\n        \"startTime\": \"2020-05-05T17:44:14.472Z\",\n        \"timeLife\": 0,\n        \"dt_Created\": \"2020-05-05T17:44:14.472Z\",\n        \"dt_Modified\": \"2020-05-05T17:44:14.472Z\",\n        \"enabled\": true,\n        \"_id\": \"5eb1a5ee75ed86000438a3ca\",\n        \"name\": \"gastos por sucursales\",\n        \"scheduledTime\": 129,\n        \"project\": {\n            \"dt_Created\": \"2020-05-05T13:52:16.697Z\",\n            \"dt_Modified\": \"2020-05-05T13:52:16.697Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb16f903c591a0004389f21\",\n            \"name\": \"gastos medicos por ips\",\n            \"id_Created\": \"5eb0173aba5ae60004b18ef7\",\n            \"id_Modified\": \"5eb0173aba5ae60004b18ef7\",\n            \"__v\": 0\n        },\n        \"user\": {\n            \"dt_Created\": \"2020-05-05T12:49:00.820Z\",\n            \"dt_Modified\": \"2020-05-05T12:49:00.820Z\",\n            \"enabled\": true,\n            \"_id\": \"5eb160bc3c591a0004389f1c\",\n            \"email\": \"exampleuser@gmail.com\",\n            \"displayName\": \"juan perez\",\n            \"__v\": 0\n        },\n        \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n        \"id_Modified\": \"5eb160bc3c591a0004389f1c\",\n        \"status\": \"Created\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+								"type": "text",
+								"description": "Token de autenticación"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/task?id=5eb1a9b175ed86000438a3cd",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"task"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5eb1a9b175ed86000438a3cd",
+									"description": "Código identificador"
+								}
+							]
+						},
+						"description": "<h1>Descripción</h1>\nMetodo que expone las funcionalidades necesarias para eliminar Tareas"
+					},
+					"response": [
+						{
+							"name": "Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+										"type": "text",
+										"description": "Token de autenticación"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/task?id=5eb1a94475ed86000438a3cc",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"task"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5eb1a94475ed86000438a3cc",
+											"description": "Código identificador"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"28-4Jfc76kKM+LFlwsgkc0S4qLTwjM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 17:58:47 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"la tarea ha sido eliminada\"\n}"
+						}
+					]
+				},
+				{
+					"name": "start",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+								"type": "text",
+								"description": "Token de autenticación"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/task/start?id=5eb1ab8e75ed86000438a3ce",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"task",
+								"start"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5eb1ab8e75ed86000438a3ce",
+									"description": "Código identificador"
+								}
+							]
+						},
+						"description": "<h1>Descripción</h1>\nIniciar o reiniciar una tarea"
+					},
+					"response": []
+				},
+				{
+					"name": "pause",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+								"type": "text",
+								"description": "Token de autenticación"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/task/pause?id=5eb1a5d775ed86000438a3c9",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"task",
+								"pause"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5eb1a5d775ed86000438a3c9",
+									"description": "Código identificador"
+								}
+							]
+						},
+						"description": "<h1>Descripción</h1>\nMétodo para pausar la tarea"
+					},
+					"response": [
+						{
+							"name": "pause",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+										"type": "text",
+										"description": "Token de autenticación"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/task/pause?id=5eb1a5d775ed86000438a3c9",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"task",
+										"pause"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5eb1a5d775ed86000438a3c9",
+											"description": "Código identificador"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "419"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"1a3-l5MHkOqmYF5Vc2bczesIARPfzXE\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 18:06:42 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"task\": {\n        \"startTime\": \"2020-05-05T18:04:30.033Z\",\n        \"timeLife\": 2,\n        \"dt_Created\": \"2020-05-05T17:43:51.058Z\",\n        \"dt_Modified\": \"2020-05-05T18:06:42.229Z\",\n        \"enabled\": true,\n        \"_id\": \"5eb1a5d775ed86000438a3c9\",\n        \"name\": \"gastos por segmentos\",\n        \"scheduledTime\": 240,\n        \"project\": \"5eb16f903c591a0004389f21\",\n        \"user\": \"5eb160bc3c591a0004389f1c\",\n        \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n        \"id_Modified\": \"5eb160bc3c591a0004389f1c\",\n        \"status\": \"Paused\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "stop",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+								"type": "text",
+								"description": "Token de autenticación"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {}
+							}
+						},
+						"url": {
+							"raw": "https://api-rst-qrvey.herokuapp.com/api/task/stop?id=5eb1ab8e75ed86000438a3ce",
+							"protocol": "https",
+							"host": [
+								"api-rst-qrvey",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"task",
+								"stop"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5eb1ab8e75ed86000438a3ce",
+									"description": "Código identificador"
+								}
+							]
+						},
+						"description": "<h1>Descripción</h1>\nFinalizar tarea"
+					},
+					"response": [
+						{
+							"name": "stop",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWIxNjBiYzNjNTkxYTAwMDQzODlmMWMiLCJpYXQiOjE1ODg2ODMxNjMsImV4cCI6MTU4ODc2OTU2M30.ZQ08169pmaPkrWWNo599ASMZdLp8C9eIKReUr-8Ckrg",
+										"type": "text",
+										"description": "Token de autenticación"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://api-rst-qrvey.herokuapp.com/api/task/stop?id=5eb1a5ee75ed86000438a3ca",
+									"protocol": "https",
+									"host": [
+										"api-rst-qrvey",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"api",
+										"task",
+										"stop"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5eb1a5ee75ed86000438a3ca",
+											"description": "Código identificador"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "421"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"1a5-nIeczFS4y9ogKSSYbU3wxzwqILY\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 05 May 2020 18:05:59 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"task\": {\n        \"startTime\": \"2020-05-05T18:01:18.782Z\",\n        \"timeLife\": 5,\n        \"dt_Created\": \"2020-05-05T17:44:14.472Z\",\n        \"dt_Modified\": \"2020-05-05T18:05:59.711Z\",\n        \"enabled\": true,\n        \"_id\": \"5eb1a5ee75ed86000438a3ca\",\n        \"name\": \"gastos por sucursales\",\n        \"scheduledTime\": 129,\n        \"project\": \"5eb16f903c591a0004389f21\",\n        \"user\": \"5eb160bc3c591a0004389f1c\",\n        \"id_Created\": \"5eb160bc3c591a0004389f1c\",\n        \"id_Modified\": \"5eb160bc3c591a0004389f1c\",\n        \"status\": \"Stopped\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "Metodos necesarios para administrar las tareas",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "49008017-e7e6-4ab3-8469-acbc8ea13bf2",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e0713241-8fa4-4303-bb63-770636ca2fba",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
