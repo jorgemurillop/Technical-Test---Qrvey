@@ -1,9 +1,5 @@
 'use strict'
 
-// var assert = require('assert');
-// const request = require('supertest');
-// const app = require('../app');
-
 let chai = require('chai');
 let chaiHttp = require('chai-http');
 const expect = require('chai').expect;
@@ -11,33 +7,67 @@ const config = require('./config');
 
 chai.use(chaiHttp);
 
-describe('Insert a user: ', () => {
-    it('should insert a user', (done) => {
-       
+describe('Loguin: ', () => {
+    it('Get token', (done) => {
+
         chai.request(config.URL)
-            .post('/api/signup')
+            .post('/api/signin')
             .set('Content-Type', 'application/json')
             .set('Accept', 'application/json')
             .send({
-                "email": "utestQrvey_1@gmail.com",
-                "displayName": "unit test",
+                "email": "unittestQrvey123@gmail.com",
                 "password": "XyZ123QWe_"
             })
             .end(function (err, res) {
-                console.log(res.body);
-                expect(res).to.have.status(201);
+                console.log(res.body);                
+                expect(res).to.have.status(200);
+                done();
+            });
+
+    });
+});
+
+describe('List Users: ', () => {
+    it('Get users', (done) => {
+
+        chai.request(config.URL)
+            .get('/api/user')
+            .set('Content-Type', 'application/json')
+            .set('Accept', 'application/json')
+            .end(function (err, res) {
+                console.log(res.body);                
+                expect(res).to.have.status(403);
+                done();
+            });
+
+    });
+});
+
+describe('Authenticate a user and get list user: ', () => {
+    it('Get user', (done) => {
+        var agent = chai.request.agent(config.URL)
+
+        agent.post('/api/signin')
+            .set('Content-Type', 'application/json')
+            .set('Accept', 'application/json')
+            .send({
+                "email": "unittestQrvey123@gmail.com",
+                "password": "XyZ123QWe_"
+            })
+            .end(function (err, res) {
+                console.log('res.body')
+                var token = res.body.token;
+                
+                expect(res).to.have.status(200);
+                return agent.get('/api/user')
+                    .set('Authorization',`Bearer ${token}`)
+                    .then(function (res) {
+                        expect(res).to.have.status(200);
+                        console.log(res.body)
+                        done();
+                    });
                 done();
             });
     });
 });
 
-
-
-// var assert = require('assert');
-// describe('Array', function() {
-//   describe('#indexOf()', function() {
-//     it('should return -1 when the value is not present', function() {
-//       assert.equal([1, 2, 3].indexOf(4), -1);
-//     });
-//   });
-// });
