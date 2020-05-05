@@ -9,12 +9,15 @@ const app = require('./app');
 const config = require('./config');
 
 console.log('Data Base');
-console.log(config.db);
+console.log(config.DB);
 console.log('Puerto');
-console.log(config.port);
+console.log(config.PORT); 
+console.log('enviroment');
+console.log(config.ENV);
+
 
 //conectamos a la base de datos
-mongoose.connect(config.db, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true }, (err, res) => {
+mongoose.connect(config.DB, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true }, (err, res) => {
     if (err) {
         return console.log(`Error al conectar a la base de datos: ${err}`);
     }
@@ -22,12 +25,12 @@ mongoose.connect(config.db, { useCreateIndex: true, useNewUrlParser: true, useUn
    
     //iniciando el server
     //aplicacion en escucha
-    app.listen(config.port, (err) => {
+    app.listen(config.PORT, (err) => {
         if (err) {
             console.log(`Error en el listen - ${err}`);
         }
 
-        console.log(`Server on port ${config.port}`)
+        console.log(`Server on port ${config.PORT}`)
     })
 });
 
