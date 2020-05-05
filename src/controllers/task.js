@@ -26,11 +26,28 @@ function get(req, res) {
         .populate('user');
 }
 
+function getByProjectId(req, res) {
+    console.log('Get With Filter projectId');
+    let projectId = req.query.id;
+
+    Task.find({ project:projectId }, (err, tasks) => {
+        if (err) return res.status(500).send({ message: `error al consultar las tareas: ${err}` });
+        if (!tasks) return res.status(404).send({ message: `la tarea no existe` });
+
+        //ordeno por la fecha de creacion y filtro los que no estan activos
+        tasks = tasks.filter(t => t.enabled).sort((x, y) => x.dt_Created > y.dt_Created ? -1 : 1);
+
+        res.status(200).send({ tasks });
+    })
+        .populate('project')
+        .populate('user');
+}
+
 function getById(req, res) {
     console.log('Get By Id');
-    let taskId = req.params.taskId;
+    let taskId = req.query.id;
 
-    console.log(`sesion usuario: ${req.user}`);
+    console.log(`task id: ${taskId}`);
 
     Task.findById(taskId)
         .populate('project')
@@ -77,7 +94,7 @@ function save(req, res) {
 
 function update(req, res) {
     console.log('update');
-    let taskId = req.params.taskId;
+    let taskId = req.query.id;
     let update = req.body;
 
     update.dt_Modified = Date.now();
@@ -103,7 +120,7 @@ function update(req, res) {
 
 function remove(req, res) {
     console.log('delete');
-    let taskId = req.params.taskId;
+    let taskId = req.query.id;
 
     Task.findById(taskId, (err, task) => {
         if (err) return res.status(500).send({ message: `error al borrar la tarea: ${err}` });
@@ -119,7 +136,7 @@ function remove(req, res) {
 
 function start(req, res) {
     console.log('start');
-    let taskId = req.body.id;
+    let taskId = req.query.id;
     console.log(`start ${taskId}`);
 
     Task.findById(taskId, (err, task) => {
@@ -152,7 +169,7 @@ function start(req, res) {
 
 function pause(req, res) {
     console.log('pause');
-    let taskId = req.body.id;
+    let taskId = req.query.id;
     console.log(`pause ${taskId}`);
 
     Task.findById(taskId, (err, task) => {
@@ -184,7 +201,7 @@ function pause(req, res) {
 
 function stop(req, res) {
     console.log('stop');
-    let taskId = req.body.id;
+    let taskId = req.query.id;
     console.log(`stop ${taskId}`);
 
     Task.findById(taskId, (err, task) => {
@@ -219,6 +236,7 @@ module.exports = {
     save,
     remove,
     getById,
+    getByProjectId,
     start,
     stop,
     pause,

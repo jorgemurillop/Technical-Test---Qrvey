@@ -32,7 +32,8 @@ function get(req, res) {
 
 function getById(req, res) {
     console.log('Get By Id');
-    let projectId = req.params.projectId;
+    let projectId = req.query.id;
+    
     Project.findById(projectId, (err, project) => {
         if (err) return res.status(500).send({ message: `error al crear el proyecto: ${err}` });
         if (!project) return res.status(404).send({ message: `el proyecto no existe` });
@@ -55,25 +56,25 @@ function save(req, res) {
     });
 }
 
-function update(req, res) {
-    console.log('update');
-    let projectId = req.params.projectId;
+function update(req, res) {    
+    let projectId = req.query.id;    
     let update = req.body;
+    console.log('update');
+    console.log(req.body);
 
     update.dt_Modified = Date.now();
     update.id_Modified = req.user;
-    console.log(req.user);
-
+    
     Project.findByIdAndUpdate(projectId, update, (err, project) => {
         if (err) return res.status(500).send({ message: `error al actualizar el proyecto: ${err}` });
         if (!project) return res.status(500).send({ message: 'No existe el proyecto' });
-        res.status(200).send({ project: project });
+        res.status(200).send({ project: update });
     });
 }
 
 function remove(req, res) {
-    console.log('delete');
-    let projectId = req.params.projectId;
+    console.log('delete');    
+    let projectId = req.query.id;
 
     Project.findById(projectId, (err, project) => {
         if (err) return res.status(500).send({ message: `error al borrar el proyecto: ${err}` });
