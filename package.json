@@ -5,13 +5,18 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "node src/index.js"
+    "dev": "nodemon src/index.js",
+    
+    "test": "mocha ./src/test/test.js",
+    "test1": "mocha --file ./src/test/test.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "connect-flash": "^0.1.1",
     "ejs": "^3.1.2",
     "ejs-mate": "^3.0.0",
@@ -23,9 +28,13 @@
     "mongoose": "^5.9.11",
     "morgan": "^1.10.0",
     "node-uuid": "^1.4.8",
+    "nodemon": "^2.0.3",
+    "supertest": "^4.0.2",
     "underscore": "^1.10.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^7.1.2"
+  },
   "engines": {
     "node": "10.x"
   }
