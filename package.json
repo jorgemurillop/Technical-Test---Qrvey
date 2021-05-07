@@ -30,7 +30,7 @@
     "node-uuid": "^1.4.8",
     "nodemon": "^2.0.3",
     "supertest": "^4.0.2",
-    "underscore": "^1.10.2"
+    "underscore": "^1.12.1"
   },
   "devDependencies": {
     "mocha": "^7.1.2"
