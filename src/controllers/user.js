@@ -33,7 +33,7 @@ function signIn(req, res) {
             return res.status(200).send({ msg: 'Te has logueado correctamente', token: service.createToken(user) })
         });
 
-    }).select('_id email + password');
+    }).select('_id email +password');
 }
 
 function get(req, res) {

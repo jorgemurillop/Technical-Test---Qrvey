@@ -106,7 +106,7 @@ function update(req, res) {
     if (req.body.status) update.status = req.body.status;
 
     //validamos la existencia del proyecto
-    Project.exists({ _id: task.project }, (err, exist) => {
+    Project.exists({ _id: update.project }, (err, exist) => {
         if (err) return res.status(500).send({ message: `error al crear la tarea: ${err}` });
         if (!exist) return res.status(404).send({ message: `el proyecto no existe` });
 
