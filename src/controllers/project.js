@@ -4,45 +4,46 @@ const Task = require('../models/task');
 const service = require('../services');
 
 
-function getAlls(req, res) {
+async function getAlls(req, res) {
     console.log('Get All Not Filter');
 
-    Project.find({}, (err, projects) => {
-        if (err) return res.status(500).send({ message: `error al consultar los proyectos: ${err}` });
-        if (!projects) return res.status(404).send({ message: `el proyecto no existe` });
-
+    try {
+        const projects = await Project.find({});
         //ordeno por la fecha de creacion y filtro los que no estan activos
         projects.sort((x, y) => x.dt_Created > y.dt_Created ? -1 : 1);
         res.status(200).send({ projects });
-    });
+    } catch (err) {
+        res.status(500).send({ message: `error al consultar los proyectos: ${err}` });
+    }
 }
 
-function get(req, res) {
+async function get(req, res) {
     console.log('Get With Filter');
 
-    Project.find({}, (err, projects) => {
-        if (err) return res.status(500).send({ message: `error al consultar los proyectos: ${err}` });
-        if (!projects) return res.status(404).send({ message: `el proyecto no existe` });
-
+    try {
+        let projects = await Project.find({});
         //ordeno por la fecha de creacion y filtro los que no estan activos
         projects = projects.filter(p => p.enabled).sort((x, y) => x.dt_Created > y.dt_Created ? -1 : 1);
         res.status(200).send({ projects });
-    });
+    } catch (err) {
+        res.status(500).send({ message: `error al consultar los proyectos: ${err}` });
+    }
 }
 
-function getById(req, res) {
+async function getById(req, res) {
     console.log('Get By Id');
     let projectId = req.query.id;
-    
-    Project.findById(projectId, (err, project) => {
-        if (err) return res.status(500).send({ message: `error al crear el proyecto: ${err}` });
-        if (!project) return res.status(404).send({ message: `el proyecto no existe` });
 
+    try {
+        const project = await Project.findById(projectId);
+        if (!project) return res.status(404).send({ message: `el proyecto no existe` });
         res.status(200).send({ project });
-    });
+    } catch (err) {
+        res.status(500).send({ message: `error al crear el proyecto: ${err}` });
+    }
 }
 
-function save(req, res) {
+async function save(req, res) {
     console.log('post');
 
     let project = new Project();
@@ -50,99 +51,104 @@ function save(req, res) {
     project.id_Created = req.user;
     project.id_Modified = req.user;
 
-    project.save((err, newProject) => {
-        if (err) return res.status(500).send({ message: `error al salvar el proyecto: ${err}` });
+    try {
+        const newProject = await project.save();
         res.status(200).send({ project: newProject });
-    });
+    } catch (err) {
+        res.status(500).send({ message: `error al salvar el proyecto: ${err}` });
+    }
 }
 
-function update(req, res) {    
-    let projectId = req.query.id;    
+async function update(req, res) {
+    let projectId = req.query.id;
     let update = req.body;
     console.log('update');
     console.log(req.body);
 
     update.dt_Modified = Date.now();
     update.id_Modified = req.user;
-    
-    Project.findByIdAndUpdate(projectId, update, (err, project) => {
-        if (err) return res.status(500).send({ message: `error al actualizar el proyecto: ${err}` });
+
+    try {
+        const project = await Project.findByIdAndUpdate(projectId, update);
         if (!project) return res.status(500).send({ message: 'No existe el proyecto' });
         res.status(200).send({ project: update });
-    });
+    } catch (err) {
+        res.status(500).send({ message: `error al actualizar el proyecto: ${err}` });
+    }
 }
 
-function remove(req, res) {
-    console.log('delete');    
+async function remove(req, res) {
+    console.log('delete');
     let projectId = req.query.id;
 
-    Project.findById(projectId, (err, project) => {
-        if (err) return res.status(500).send({ message: `error al borrar el proyecto: ${err}` });
+    try {
+        const project = await Project.findById(projectId);
         if (!project) return res.status(500).send({ message: 'No existe el proyecto' });
 
-        project.remove(err => {
-            if (err) return res.status(500).send({ message: `error al borrar el proyecto: ${err}` });
-            res.status(200).send({ message: 'El proyecto ha sido eliminado' });
-        });
-    });
+        await project.deleteOne();
+        res.status(200).send({ message: 'El proyecto ha sido eliminado' });
+    } catch (err) {
+        res.status(500).send({ message: `error al borrar el proyecto: ${err}` });
+    }
 }
 
-function getMyTime(req, res) {
+async function getMyTime(req, res) {
     var projects = [];
 
-    Task.find({ user: req.user }, async (err, tasks) => {
-        if (!tasks) return;
+    try {
+        const tasks = await Task.find({ user: req.user });
+        if (!tasks) return res.status(200).send(projects);
 
         var groups = tasks.groupBy('project');
         var projectGroups = Object.getOwnPropertyNames(groups);
 
         await service.asyncForEach(projectGroups, async function (projectId, idx, array) {
-            await Project.findById((projectId), (err, project) => {
-                if (err) return res.status(500).send({ message: `error al consultar los proyectos: ${err}` });
-                if (!project) return res.status(404).send({ message: `el proyecto no existe` });
+            const project = await Project.findById(projectId);
+            if (!project) return;
 
-                project.extended = [{
-                    userId: req.user,
-                    timeLife: groups[projectId].sum("timeLife")
-                }];
+            project.extended = [{
+                userId: req.user,
+                timeLife: groups[projectId].sum("timeLife")
+            }];
 
-                projects.push(project);
-            }).exec();
+            projects.push(project);
         });
 
         res.status(200).send(projects);
-    });
+    } catch (err) {
+        res.status(500).send({ message: `error al consultar los proyectos: ${err}` });
+    }
 }
 
 
 async function getUsersTime(req, res) {
     var result = [];
 
-    await Project.find({}, async (err, projects) => {
-        if (err) return res.status(500).send({ message: `error al consultar los proyectos: ${err}` });
-        if (!projects) return res.status(404).send({ message: `el proyecto no existe` });
+    try {
+        const projects = await Project.find({});
 
         await service.asyncForEach(projects, async (project) => {
             var tasksExtended = [];
-            await Task.find({ project: project.projectId }, async (err, tasks) => {
-                if (!tasks) return;
+            const tasks = await Task.find({ project: project.projectId });
+            if (!tasks) return;
 
-                var groups = tasks.groupBy('user');
-                var taskGroupsByUser = Object.getOwnPropertyNames(groups);
+            var groups = tasks.groupBy('user');
+            var taskGroupsByUser = Object.getOwnPropertyNames(groups);
 
-                await service.asyncForEach(taskGroupsByUser, async function (userId) {
-                    tasksExtended.push({ userId: userId, timeLife: groups[userId].sum("timeLife") });
-                });
-
-                project.extended = tasksExtended;
-                result.push(project);
+            await service.asyncForEach(taskGroupsByUser, async function (userId) {
+                tasksExtended.push({ userId: userId, timeLife: groups[userId].sum("timeLife") });
             });
+
+            project.extended = tasksExtended;
+            result.push(project);
         });
 
         //ordeno por la fecha de creacion y filtro los que no estan activos
         result.sort((x, y) => x.dt_Created > y.dt_Created ? -1 : 1);
         res.status(200).send({ result });
-    });
+    } catch (err) {
+        res.status(500).send({ message: `error al consultar los proyectos: ${err}` });
+    }
 }
 
 

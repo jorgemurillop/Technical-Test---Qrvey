@@ -17,22 +17,19 @@ console.log(config.ENV);
 
 
 //conectamos a la base de datos
-mongoose.connect(config.DB, { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true }, (err, res) => {
-    if (err) {
-        return console.log(`Error al conectar a la base de datos: ${err}`);
-    }
-    console.log('Conexión establecida');
-   
-    //iniciando el server
-    //aplicacion en escucha
-    app.listen(config.PORT, (err) => {
-        if (err) {
-            console.log(`Error en el listen - ${err}`);
-        }
+//a partir de mongoose 6, connect() ya no acepta callback ni las opciones
+//useCreateIndex/useNewUrlParser/useUnifiedTopology (son el comportamiento por defecto)
+mongoose.connect(config.DB)
+    .then(() => {
+        console.log('Conexión establecida');
 
-        console.log(`Server on port ${config.PORT}`)
+        //iniciando el server
+        //aplicacion en escucha
+        app.listen(config.PORT, () => {
+            console.log(`Server on port ${config.PORT}`)
+        });
     })
-});
+    .catch((err) => console.log(`Error al conectar a la base de datos: ${err}`));
 
 
 

@@ -10,57 +10,49 @@ const Status = {
     Paused: 'Paused'
 }
 
-function get(req, res) {
+async function get(req, res) {
     console.log('Get With Filter UserID');
 
-    Task.find({ user: req.user }, (err, tasks) => {
-        if (err) return res.status(500).send({ message: `error al consultar las tareas: ${err}` });
-        if (!tasks) return res.status(404).send({ message: `la tarea no existe` });
-
+    try {
+        let tasks = await Task.find({ user: req.user }).populate('project').populate('user');
         //ordeno por la fecha de creacion y filtro los que no estan activos
         tasks = tasks.filter(t => t.enabled).sort((x, y) => x.dt_Created > y.dt_Created ? -1 : 1);
-
         res.status(200).send({ tasks });
-    })
-        .populate('project')
-        .populate('user');
+    } catch (err) {
+        res.status(500).send({ message: `error al consultar las tareas: ${err}` });
+    }
 }
 
-function getByProjectId(req, res) {
+async function getByProjectId(req, res) {
     console.log('Get With Filter projectId');
     let projectId = req.query.id;
 
-    Task.find({ project:projectId }, (err, tasks) => {
-        if (err) return res.status(500).send({ message: `error al consultar las tareas: ${err}` });
-        if (!tasks) return res.status(404).send({ message: `la tarea no existe` });
-
+    try {
+        let tasks = await Task.find({ project: projectId }).populate('project').populate('user');
         //ordeno por la fecha de creacion y filtro los que no estan activos
         tasks = tasks.filter(t => t.enabled).sort((x, y) => x.dt_Created > y.dt_Created ? -1 : 1);
-
         res.status(200).send({ tasks });
-    })
-        .populate('project')
-        .populate('user');
+    } catch (err) {
+        res.status(500).send({ message: `error al consultar las tareas: ${err}` });
+    }
 }
 
-function getById(req, res) {
+async function getById(req, res) {
     console.log('Get By Id');
     let taskId = req.query.id;
 
     console.log(`task id: ${taskId}`);
 
-    Task.findById(taskId)
-        .populate('project')
-        .populate('user')
-        .exec(function (err, task) {
-            if (err) return res.status(500).send({ message: `error al crear la tarea: ${err}` });
-            if (!task) return res.status(404).send({ message: `la tarea no existe` });
-
-            res.status(200).send({ task });
-        });
+    try {
+        const task = await Task.findById(taskId).populate('project').populate('user');
+        if (!task) return res.status(404).send({ message: `la tarea no existe` });
+        res.status(200).send({ task });
+    } catch (err) {
+        res.status(500).send({ message: `error al crear la tarea: ${err}` });
+    }
 }
 
-function save(req, res) {
+async function save(req, res) {
     console.log(req.body);
 
     //asiganmos los valores del body
@@ -78,21 +70,21 @@ function save(req, res) {
     console.log(req.body.status);
     if (req.body.status) task.status = req.body.status;
 
-    //validamos la existencia del proyecto
-    Project.exists({ _id: task.project }, (err, exist) => {
-        if (err) return res.status(500).send({ message: `error al crear la tarea: ${err}` });
+    try {
+        //validamos la existencia del proyecto
+        const exist = await Project.exists({ _id: task.project });
         if (!exist) return res.status(404).send({ message: `el proyecto no existe` });
 
         console.log(task);
-        task.save((err, newTask) => {
-            if (err) return res.status(500).send({ message: `error al guardar la tarea: ${err}` });
-            console.log(newTask);
-            res.status(200).send({ task: newTask });
-        });
-    });
+        const newTask = await task.save();
+        console.log(newTask);
+        res.status(200).send({ task: newTask });
+    } catch (err) {
+        res.status(500).send({ message: `error al guardar la tarea: ${err}` });
+    }
 }
 
-function update(req, res) {
+async function update(req, res) {
     console.log('update');
     let taskId = req.query.id;
     let update = req.body;
@@ -105,42 +97,42 @@ function update(req, res) {
     console.log(req.body.status);
     if (req.body.status) update.status = req.body.status;
 
-    //validamos la existencia del proyecto
-    Project.exists({ _id: update.project }, (err, exist) => {
-        if (err) return res.status(500).send({ message: `error al crear la tarea: ${err}` });
+    try {
+        //validamos la existencia del proyecto
+        const exist = await Project.exists({ _id: update.project });
         if (!exist) return res.status(404).send({ message: `el proyecto no existe` });
 
-        Task.findByIdAndUpdate(taskId, update, (err, task) => {
-            if (err) return res.status(500).send({ message: `error al actualizar la tarea: ${err}` });
-            if (!task) return res.status(500).send({ message: 'No existe la tarea' });
-            res.status(200).send({ task: task });
-        });
-    });
+        const task = await Task.findByIdAndUpdate(taskId, update);
+        if (!task) return res.status(500).send({ message: 'No existe la tarea' });
+        res.status(200).send({ task: task });
+    } catch (err) {
+        res.status(500).send({ message: `error al actualizar la tarea: ${err}` });
+    }
 }
 
-function remove(req, res) {
+async function remove(req, res) {
     console.log('delete');
     let taskId = req.query.id;
 
-    Task.findById(taskId, (err, task) => {
-        if (err) return res.status(500).send({ message: `error al borrar la tarea: ${err}` });
+    try {
+        const task = await Task.findById(taskId);
         if (!task) return res.status(500).send({ message: 'No existe la tarea' });
 
-        task.remove(err => {
-            if (err) return res.status(500).send({ message: `error al borrar la tarea: ${err}` });
-            res.status(200).send({ message: 'la tarea ha sido eliminada' });
-        });
-    });
+        await task.deleteOne();
+        res.status(200).send({ message: 'la tarea ha sido eliminada' });
+    } catch (err) {
+        res.status(500).send({ message: `error al borrar la tarea: ${err}` });
+    }
 }
 
 
-function start(req, res) {
+async function start(req, res) {
     console.log('start');
     let taskId = req.query.id;
     console.log(`start ${taskId}`);
 
-    Task.findById(taskId, (err, task) => {
-        if (err) return res.status(500).send({ message: `error al actualizar la tarea: ${err}` });
+    try {
+        const task = await Task.findById(taskId);
         if (!task) return res.status(500).send({ message: 'No existe la tarea' });
 
         task.dt_Modified = Date.now();
@@ -157,23 +149,22 @@ function start(req, res) {
         task.status = Status.Started;
         console.log(`start - estado final: ${task.status}`);
 
-        Task.findByIdAndUpdate(taskId, task, (err, taskUpdated) => {
-            if (err) return res.status(500).send({ message: `error al actualizar la tarea: ${err}` });
-            if (!taskUpdated) return res.status(500).send({ message: 'No existe la tarea' });
-            res.status(200).send({ task: task });
-        });
-
-    });
+        const taskUpdated = await Task.findByIdAndUpdate(taskId, task);
+        if (!taskUpdated) return res.status(500).send({ message: 'No existe la tarea' });
+        res.status(200).send({ task: task });
+    } catch (err) {
+        res.status(500).send({ message: `error al actualizar la tarea: ${err}` });
+    }
 }
 
 
-function pause(req, res) {
+async function pause(req, res) {
     console.log('pause');
     let taskId = req.query.id;
     console.log(`pause ${taskId}`);
 
-    Task.findById(taskId, (err, task) => {
-        if (err) return res.status(500).send({ message: `error al actualizar la tarea: ${err}` });
+    try {
+        const task = await Task.findById(taskId);
         if (!task) return res.status(500).send({ message: 'No existe la tarea' });
 
         task.dt_Modified = Date.now();
@@ -191,21 +182,21 @@ function pause(req, res) {
         console.log(`start - estado final: ${task.status}`);
 
         console.log({ task: task });
-        Task.findByIdAndUpdate(taskId, task, (err, taskUpdated) => {
-            if (err) return res.status(500).send({ message: `error al actualizar la tarea: ${err}` });
-            if (!taskUpdated) return res.status(500).send({ message: 'No existe la tarea' });
-            res.status(200).send({ task: task });
-        });
-    });
+        const taskUpdated = await Task.findByIdAndUpdate(taskId, task);
+        if (!taskUpdated) return res.status(500).send({ message: 'No existe la tarea' });
+        res.status(200).send({ task: task });
+    } catch (err) {
+        res.status(500).send({ message: `error al actualizar la tarea: ${err}` });
+    }
 }
 
-function stop(req, res) {
+async function stop(req, res) {
     console.log('stop');
     let taskId = req.query.id;
     console.log(`stop ${taskId}`);
 
-    Task.findById(taskId, (err, task) => {
-        if (err) return res.status(500).send({ message: `error al actualizar la tarea: ${err}` });
+    try {
+        const task = await Task.findById(taskId);
         if (!task) return res.status(500).send({ message: 'No existe la tarea' });
 
         task.dt_Modified = Date.now();
@@ -222,13 +213,12 @@ function stop(req, res) {
         task.status = Status.Stopped;
         console.log(`start - estado final: ${task.status}`);
 
-        Task.findByIdAndUpdate(taskId, task, (err, taskUpdated) => {
-            if (err) return res.status(500).send({ message: `error al actualizar la tarea: ${err}` });
-            if (!taskUpdated) return res.status(500).send({ message: 'No existe la tarea' });
-            res.status(200).send({ task: task });
-        });
-
-    });
+        const taskUpdated = await Task.findByIdAndUpdate(taskId, task);
+        if (!taskUpdated) return res.status(500).send({ message: 'No existe la tarea' });
+        res.status(200).send({ task: task });
+    } catch (err) {
+        res.status(500).send({ message: `error al actualizar la tarea: ${err}` });
+    }
 }
 
 module.exports = {
