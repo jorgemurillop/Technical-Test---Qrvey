@@ -1,7 +1,10 @@
 //nuevo tipos de variables, buenas practicas
 'use strict'
 
-//modulo para interaccion con mongo 
+//carga variables de entorno desde .env si existe (no falla si no hay archivo)
+require('dotenv').config();
+
+//modulo para interaccion con mongo
 const mongoose = require('mongoose');
 //referenciamos el app.js
 const app = require('./app');
