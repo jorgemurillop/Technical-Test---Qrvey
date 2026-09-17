@@ -10,6 +10,11 @@ const Status = {
     Paused: 'Paused'
 }
 
+//una tarea es un recurso personal: solo su dueño (task.user) puede leerla o modificarla
+function esDueño(task, req) {
+    return task.user && task.user.toString() === req.user;
+}
+
 async function get(req, res) {
     console.log('Get With Filter UserID');
 
@@ -46,6 +51,7 @@ async function getById(req, res) {
     try {
         const task = await Task.findById(taskId).populate('project').populate('user');
         if (!task) return res.status(404).send({ message: `la tarea no existe` });
+        if (!esDueño(task, req)) return res.status(403).send({ message: 'no tienes permiso sobre esta tarea' });
         res.status(200).send({ task });
     } catch (err) {
         res.status(500).send({ message: `error al crear la tarea: ${err}` });
@@ -98,6 +104,10 @@ async function update(req, res) {
     if (req.body.status) update.status = req.body.status;
 
     try {
+        const actual = await Task.findById(taskId);
+        if (!actual) return res.status(500).send({ message: 'No existe la tarea' });
+        if (!esDueño(actual, req)) return res.status(403).send({ message: 'no tienes permiso sobre esta tarea' });
+
         //validamos la existencia del proyecto
         const exist = await Project.exists({ _id: update.project });
         if (!exist) return res.status(404).send({ message: `el proyecto no existe` });
@@ -117,6 +127,7 @@ async function remove(req, res) {
     try {
         const task = await Task.findById(taskId);
         if (!task) return res.status(500).send({ message: 'No existe la tarea' });
+        if (!esDueño(task, req)) return res.status(403).send({ message: 'no tienes permiso sobre esta tarea' });
 
         await task.deleteOne();
         res.status(200).send({ message: 'la tarea ha sido eliminada' });
@@ -134,6 +145,7 @@ async function start(req, res) {
     try {
         const task = await Task.findById(taskId);
         if (!task) return res.status(500).send({ message: 'No existe la tarea' });
+        if (!esDueño(task, req)) return res.status(403).send({ message: 'no tienes permiso sobre esta tarea' });
 
         task.dt_Modified = Date.now();
         task.id_Modified = req.user;
@@ -166,6 +178,7 @@ async function pause(req, res) {
     try {
         const task = await Task.findById(taskId);
         if (!task) return res.status(500).send({ message: 'No existe la tarea' });
+        if (!esDueño(task, req)) return res.status(403).send({ message: 'no tienes permiso sobre esta tarea' });
 
         task.dt_Modified = Date.now();
         task.id_Modified = req.user;
@@ -198,6 +211,7 @@ async function stop(req, res) {
     try {
         const task = await Task.findById(taskId);
         if (!task) return res.status(500).send({ message: 'No existe la tarea' });
+        if (!esDueño(task, req)) return res.status(403).send({ message: 'no tienes permiso sobre esta tarea' });
 
         task.dt_Modified = Date.now();
         task.id_Modified = req.user;
